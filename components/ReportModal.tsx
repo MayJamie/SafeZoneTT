@@ -55,6 +55,7 @@ export default function ReportModal({ isOpen, onClose, selectedCoords, onSubmit 
       const currentDate = new Date();
       setDate(getLocalDateString(currentDate));
       setTime(getLocalTimeString(currentDate));
+      setDescription(""); // Reset description field on open
       setErrorMsg(null);
     }
   }, [isOpen]);
@@ -116,11 +117,17 @@ export default function ReportModal({ isOpen, onClose, selectedCoords, onSubmit 
       return;
     }
 
+    // Mandatory description validation check
+    if (!description.trim()) {
+      setErrorMsg("Please provide a brief description of the incident.");
+      return;
+    }
+
     onSubmit({
       category,
       date,
       time,
-      description,
+      description: description.trim(),
       lat: selectedCoords?.lat || 10.6549,
       lng: selectedCoords?.lng || -61.5019,
     });
@@ -158,8 +165,9 @@ export default function ReportModal({ isOpen, onClose, selectedCoords, onSubmit 
         </p>
 
         {errorMsg && (
-          <div className="mb-4 p-3 bg-rose-950/60 border border-rose-600/50 rounded-xl text-rose-300 text-xs font-medium">
-            ⚠️ {errorMsg}
+          <div className="mb-4 p-3 bg-rose-950/60 border border-rose-600/50 rounded-xl text-rose-300 text-xs font-medium flex items-start gap-2.5">
+            <span className="shrink-0 mt-0.5">⚠️</span>
+            <span className="leading-relaxed">{errorMsg}</span>
           </div>
         )}
 
@@ -200,7 +208,6 @@ export default function ReportModal({ isOpen, onClose, selectedCoords, onSubmit 
             <div>
               <label className="block text-xs font-semibold text-slate-300 mb-1">Time</label>
               <div className="relative flex items-center">
-                {/* Time input completely reverted to original working version */}
                 <input
                   type="time"
                   value={time}
@@ -213,7 +220,9 @@ export default function ReportModal({ isOpen, onClose, selectedCoords, onSubmit 
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Brief Description / Location Detail</label>
+            <label className="block text-xs font-semibold text-slate-300 mb-1">
+              Brief Description / Location Detail <span className="text-pink-500">*</span>
+            </label>
             <textarea
               rows={3}
               value={description}
