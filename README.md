@@ -1,5 +1,3 @@
-<div align="center">
-
 # 🌸 SafeZone TT 🌸
 
 ### **Women's Safety & Civic Incident Monitoring Platform for Trinidad & Tobago**
@@ -45,6 +43,12 @@ We built **SafeZone TT** because everyone deserves to feel secure in their commu
 *   **Mapping Engine**: React-Leaflet & Stadia Maps
 *   **Icons**: Lucide React
 *   **Database**: Supabase (PostgreSQL with RLS)
+
+---
+## Screenshot
+
+<img width="725" height="794" alt="Screenshot 2026-10-01 at 12 05 29 AM" src="https://github.com/user-attachments/assets/e5083d50-01e8-4bf0-b51d-ff6fa225caa1" />
+<div align="center">
 
 ---
 
