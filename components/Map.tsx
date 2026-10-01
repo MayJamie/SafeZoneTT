@@ -180,8 +180,8 @@ export default function Map({
       <div className="h-[490px] w-full rounded-2xl overflow-hidden border border-pink-900/40 shadow-2xl relative z-0">
         <MapContainer center={trinidadCenter} zoom={10} scrollWheelZoom={true} className="h-full w-full">
           <TileLayer
-            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            url={`https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=${process.env.NEXT_PUBLIC_STADIA_API_KEY}`}
           />
 
           <MapClickHandler onMapClick={onMapClick} isModalOpen={isModalOpen} onCloseModal={onCloseModal} />
