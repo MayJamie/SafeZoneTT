@@ -50,7 +50,7 @@ export default function Home() {
     const newIncident: Incident = {
       ...newIncidentData,
       id: Date.now().toString(),
-      metoocount: 0,
+      meTooCount: 0,
     };
 
     // Optimistically update local UI instantly
@@ -73,7 +73,7 @@ export default function Home() {
       setUserVotedIncidentIds((prev) => prev.filter((votedId) => votedId !== id));
       setIncidents((prev) =>
         prev.map((inc) =>
-          inc.id === id ? { ...inc, metoocount: Math.max(0, (inc.metoocount || 0) - 1) } : inc
+          inc.id === id ? { ...inc, metTooCount: Math.max(0, (inc.meTooCount || 0) - 1) } : inc
         )
       );
       await supabase.rpc("decrement_metoo", { row_id: id });
@@ -81,7 +81,7 @@ export default function Home() {
       // Add vote
       setUserVotedIncidentIds((prev) => [...prev, id]);
       setIncidents((prev) =>
-        prev.map((inc) => (inc.id === id ? { ...inc, metoocount: (inc.metoocount || 0) + 1 } : inc))
+        prev.map((inc) => (inc.id === id ? { ...inc, metTooCount: (inc.meTooCount || 0) + 1 } : inc))
       );
       await supabase.rpc("increment_metoo", { row_id: id });
     }
@@ -189,13 +189,13 @@ export default function Home() {
                           >
                             <UserCheck className="w-3 h-3" />
                             <span>Happened to me too</span>
-                            {incident.metoocount ? (
+                            {incident.meTooCount ? (
                               <span
                                 className={`font-bold px-1.5 py-0.2 rounded-full text-[9px] ${
                                   hasVoted ? "bg-white text-pink-600" : "bg-pink-600 text-white"
                                 }`}
                               >
-                                {incident.metoocount}
+                                {incident.meTooCount}
                               </span>
                             ) : null}
                           </button>
