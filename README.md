@@ -14,6 +14,8 @@
 </div>
 
 ---
+## 🌎 Access Link: https://safe-zone-tt.vercel.app/
+---
 
 ## 🚨 Emergency Disclaimer
 > **Important Note:** SafeZone TT does not replace official emergency services. We strongly encourage reporting to local crime authorities first. This platform serves as a secondary community effort to keep friends, family, and fellow citizens safe.
